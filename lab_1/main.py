@@ -54,7 +54,8 @@ def task_1_2() -> None:
     # <------------------------------------>
     # 3) Определить минимальную необходимую частоту дискретизации
     # полученного сигнала (теорема Котельникова)
-    min_freq_kotelnikov = max_freq * 2
+    # min_freq_kotelnikov = max_freq * 2
+    min_freq_kotelnikov = max_freq * 4
     
     ic(
         max_freq,
@@ -77,6 +78,12 @@ def task_1_2() -> None:
         y_sampled,
         t_sampled,
     )
+    
+    show_plot(
+        t=t_sampled,
+        func_val=y_sampled,
+        title=f"частота по Котельникову = {min_freq_kotelnikov}",
+    )
     # >------------------------------------<
     
     
@@ -98,6 +105,7 @@ def task_1_2() -> None:
     threshold = 1e-6
     half = N // 2 + 1  # без зеркальной части
     significant = np.array([freqs[k] for k in range(half) if amp[k] > threshold])
+    # spectrum_width = significant.max() - significant.min()
     spectrum_width = significant.max()
    
     ic(
